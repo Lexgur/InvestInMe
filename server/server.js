@@ -1,9 +1,11 @@
 import express from 'express';
 import mysql from 'mysql2/promise';
 import cors from 'cors';
-import db from '../config/config.js';
+import pkg from '../config/config.js';
+import bcrypt from 'bcrypt';
 
 const app = express();
+const { db } = pkg;
 
 app.use(cors({
   origin: 'http://localhost:5173',
@@ -18,7 +20,7 @@ app.use(express.json());
 
     console.log("Mes prijungem prie DB");
 
-    // REGISTER
+// REGISTRATION STARTS
     app.post('/register', async (req, res) => {
       const { email, password, username } = req.body;
 
@@ -28,9 +30,11 @@ app.use(express.json());
       }
 
       try {
+        const hashedPassword = await bcrypt.hash(password, 10);
+
         const [result] = await pool.query(
           'INSERT INTO users (email, password, username) VALUES (?, ?, ?)', 
-          [email, password, username]
+          [email, hashedPassword, username]
         );
 
         res.status(201).json({ message: 'Registration successful!' });
@@ -39,7 +43,7 @@ app.use(express.json());
         res.status(500).json({ message: 'Error registering user' });
       }
     });
-
+//REGISTRATION ENDS
     const port = 3000;
     app.listen(port, () => {
       console.log(`Serveris klauso ${port} porto.`);
