@@ -1,10 +1,18 @@
-import './App.css'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import RegisterPage from './components/RegisterPage'; 
+import './App.css';
 
 function App() {
-
   return (
-   <h1>Starts here</h1>
-  )
+    <Router>
+      <div>
+        <h1>InvestInMe</h1>
+        <Routes>
+          <Route path="/register" element={<RegisterPage />} />
+        </Routes>
+      </div>
+    </Router>
+  );
 }
 
-export default App
+export default App;
