@@ -1,6 +1,7 @@
 import express from 'express';
 import mysql from 'mysql2/promise';
 import cors from 'cors';
+import db from '../config/config.js';
 
 const app = express();
 
@@ -13,15 +14,7 @@ app.use(express.json());
 
 (async () => {
   try {
-    const pool = await mysql.createPool({
-      host: 'localhost',
-      user: 'root',
-      password: 'root123',
-      database: 'invest',
-      waitForConnections: true,
-      connectionLimit: 10,
-      queueLimit: 0
-    });
+    const pool = await mysql.createPool(db);
 
     console.log("Mes prijungem prie DB");
 
