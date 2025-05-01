@@ -1,0 +1,47 @@
+.dashboard-container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.dashboard-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.dashboard-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.dashboard-card {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.full-width {
+    grid-column: span 2;
+}
+
+.dashboard-card h2 {
+    margin-bottom: 1rem;
+}
+
+.dashboard-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.top-investors-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.top-investors-list li {
+    margin-bottom: 0.5rem;
+}

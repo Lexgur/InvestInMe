@@ -3,6 +3,6 @@ import NavAll from './NavAll.jsx';
 
 export default function HomePage() {
     return (
-      <NavAll/>
+      <></>
     );
     }
