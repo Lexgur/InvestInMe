@@ -52,14 +52,6 @@ button {
   cursor: pointer;
   transition: background-color 0.25s, border-color 0.25s;
 }
-button:hover {
-  background-color: #005cbf;
-  border-color: #005cbf;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px solid #0069d9; /* Focus state for accessibility */
-}
 
 input, textarea {
   font-family: inherit;

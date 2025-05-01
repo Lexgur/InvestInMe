@@ -4,9 +4,9 @@ import { useAuth } from './useAuth';
 import './NavAll.css';
 import Logo from './Logo.jsx';
 
-export default function HomeBanner() {
+export default function NavAll() {
   const { pathname } = useLocation();
-  const { user, loading } = useAuth();
+  const { user, loading, logout } = useAuth();
 
   const noNav = ['/login', '/register'];
 
@@ -28,8 +28,8 @@ export default function HomeBanner() {
       {
         user ? (
           <div className="right">
-            <div>{user.name}</div>
-            <NavLink to="/logout">Logout</NavLink>
+            <div>{user.username}</div>
+            <button onClick={logout} className="nav-button-link">Logout</button>
           </div>
         ) : (
           <div className="right">

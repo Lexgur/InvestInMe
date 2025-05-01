@@ -49,10 +49,11 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = async () => {
+
     try {
-      await axios.post(C.URL + '/logout', {}, { withCredentials: true });
+      await axios.post(C.URL + 'logout', {}, { withCredentials: true });
       setUser(null);
-      navigate('/login');
+      navigate('/');
     } catch (error) {
       console.error("Logout failed:", error);
     }

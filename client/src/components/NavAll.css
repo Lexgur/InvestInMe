@@ -94,3 +94,19 @@ body {
 .auth-nav .cta-button:active {
   transform: translateY(0);
 }
+
+.nav-button-link {
+  background: none;
+  border: none;
+  color: #000000;
+  cursor: pointer;
+  text-decoration: underline;
+  font: inherit;
+  padding: 0;
+  margin-left: 1rem;
+  font-size: 16px;
+}
+
+.nav-button-link:hover {
+  text-decoration: none;
+}
