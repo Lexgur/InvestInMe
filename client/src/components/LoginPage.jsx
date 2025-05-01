@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from './useAuth.js';
 import './RegisterPage.css';
 import * as C from './constants.js';
 import Logo from './Logo.jsx';
@@ -9,6 +9,8 @@ function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const { login } = useAuth();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,16 +20,11 @@ function LoginPage() {
       return;
     }
 
-    try {
-      const response = await axios.post(C.URL + C.LOGIN_PAGE, {
-        email,
-        password,
-      });
-
-      alert(response.data.message);
-    } catch (err) {
-      setErrorMessage("Invalid credentials or server error.");
-      console.error(err);
+    const result = await login(email, password);
+    if (!result.success) {
+      setErrorMessage(result.message || "Invalid credentials");
+    } else {
+      navigate('/dashboard');
     }
   };
 
