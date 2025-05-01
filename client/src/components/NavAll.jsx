@@ -3,7 +3,6 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { useAuth } from './useAuth';
 import './NavAll.css';
 import Logo from './Logo.jsx';
-import Loader from './Loader';
 
 export default function NavAll() {
   const { pathname } = useLocation();
@@ -34,7 +33,6 @@ export default function NavAll() {
             {user?.role === 'admin' && (
               <NavLink to="/admin">Admin Panel</NavLink>
             )}
-            <div>Welcome, {user.username}</div>
             <button onClick={logout} className="nav-button-link">
               Logout
             </button>

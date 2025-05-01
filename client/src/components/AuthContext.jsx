@@ -68,7 +68,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   if (loading) {
-    return <Loader />; // You can also return a skeleton screen or some loading state here
+    return <Loader />;
   }
 
   const value = {

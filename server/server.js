@@ -130,7 +130,7 @@ const { db } = pkg;
         res.status(200).json({
           success: true,
           message: 'Login successful!',
-          user: { id: user.id, username: user.username } // Only return safe info
+          user: { id: user.id, username: user.username, role: user.role } // Only return safe info
         });
       } catch (err) {
         console.error(err);
