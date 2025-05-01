@@ -1,15 +1,16 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
-import './RegisterPage.css';
-import * as C from './constants.js';
-import Logo from './Logo.jsx';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import "./RegisterPage.css";
+import * as C from "./constants.js";
+import Logo from "./Logo.jsx";
 
 function RegisterPage() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [username, setUsername] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,7 +27,11 @@ function RegisterPage() {
         username,
       });
 
-      alert(response.data.message);
+      setSuccessMessage(response.data.message);
+      setErrorMessage("");
+      setEmail("");
+      setPassword("");
+      setUsername("");
     } catch (err) {
       setErrorMessage("Error registering user.");
       console.error(err);
@@ -35,11 +40,14 @@ function RegisterPage() {
 
   return (
     <div className="container">
-      <div className='investLogoContainer'>
+      <div className="investLogoContainer">
         <Logo></Logo>
       </div>
       <h2>Welcome</h2>
-      <p>Register to InvestInMe or <Link to="/login">Sign in</Link> with an existing account.</p>
+      <p>
+        Register to InvestInMe or <Link to="/login">Sign in</Link> with an
+        existing account.
+      </p>
       <form onSubmit={handleSubmit}>
         <div className="formGroup">
           <input
@@ -68,8 +76,11 @@ function RegisterPage() {
             required
           />
         </div>
-        <button type="submit" className="submitButton">Register</button>
-        {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+        <button type="submit" className="submitButton">
+          Register
+        </button>
+        {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
+        {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
       </form>
     </div>
   );
