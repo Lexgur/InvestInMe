@@ -29,9 +29,10 @@ function LoginPage() {
   };
 
   return (
+    <div className="wrapper">
     <div className="container">
       <div className='investLogoContainer'>
-        <Logo />
+        <Link to='/'><Logo /></Link>
       </div>
       <h2>Welcome Back</h2>
       <p>Sign in to InvestInMe or <Link to="/register">Register</Link> a new account.</p>
@@ -57,6 +58,7 @@ function LoginPage() {
         <button type="submit" className="submitButton">Login</button>
         {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
       </form>
+    </div>
     </div>
   );
 }
