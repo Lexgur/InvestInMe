@@ -25,7 +25,6 @@ function LoginPage() {
       });
 
       alert(response.data.message);
-      
     } catch (err) {
       setErrorMessage("Invalid credentials or server error.");
       console.error(err);
