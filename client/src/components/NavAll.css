@@ -1,0 +1,96 @@
+body {
+  margin: 0 auto;
+  max-width: 100%;
+  padding: 0 20px;
+  background-color: #E8E8E8;
+}
+
+.wrapper {
+  background-image: none;
+}
+
+.auth-nav {
+  background: #FFFFFF;
+  height: 85px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  color: #000000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  max-width: 100%;
+  margin: 0 auto;
+  z-index: 1000; 
+  border-radius: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow only at bottom */
+}
+
+.auth-nav .left,
+.auth-nav .right {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0; 
+}
+
+.auth-nav .left {
+  flex: 1; 
+}
+
+.auth-nav .right {
+  flex: 1;
+  justify-content: flex-end; 
+}
+
+.auth-nav .right a,
+.auth-nav .left a {
+  color: #000000; 
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  margin: 0 15px; 
+  white-space: nowrap;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.auth-nav .right a:hover,
+.auth-nav .left a:hover {
+  border-color: #999999;
+  background-color: #F5F5F5;
+  cursor: pointer;
+}
+
+/* Style for active NavLink */
+.auth-nav .right a.active,
+.auth-nav .left a.active {
+  border-color: #666666; /* Even darker grey for active state */
+  background-color: #E8E8E8; /*Mauritanian
+  background-color: #E8E8E8; /* Slightly darker grey background for active */
+}
+
+.auth-nav .cta-button {
+  padding: 15px 30px;
+  background-color: #FF6347;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.auth-nav .cta-button:hover {
+  background-color: #FF4500;
+  transform: translateY(-2px);
+}
+
+.auth-nav .cta-button:active {
+  transform: translateY(0);
+}

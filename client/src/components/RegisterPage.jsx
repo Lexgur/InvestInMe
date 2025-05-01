@@ -39,9 +39,10 @@ function RegisterPage() {
   };
 
   return (
+    <div className="wrapper">
     <div className="container">
       <div className="investLogoContainer">
-        <Logo></Logo>
+      <Link to='/'><Logo /></Link>
       </div>
       <h2>Welcome</h2>
       <p>
@@ -82,6 +83,7 @@ function RegisterPage() {
         {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
         {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
       </form>
+    </div>
     </div>
   );
 }
