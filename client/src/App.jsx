@@ -5,12 +5,10 @@ import './App.css';
 function App() {
   return (
     <Router>
-      <div>
-        <h1>InvestInMe</h1>
         <Routes>
           <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<RegisterPage />} />
         </Routes>
-      </div>
     </Router>
   );
 }
