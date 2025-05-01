@@ -123,7 +123,8 @@ const { db } = pkg;
         req.session.user = {
           id: user.id,
           email: user.email,
-          username: user.username
+          username: user.username,
+          role: user.role
         };
 
         res.status(200).json({
