@@ -4,7 +4,8 @@ import { createCampaign, getAllCampaigns, getCampaignById, getCampaignsByUserId 
 const router = express.Router();
 
 // CREATE NEW CAMPAIGN
-router.post('/new', async (req, res) => {
+router.post('/campaigns/new', async (req, res) => {
+  console.log('Request for new campaign received');
   const user = req.session.user;
   if (!user) {
     return res.status(401).json({ success: false, message: 'Unauthorized' });
@@ -40,7 +41,7 @@ router.post('/new', async (req, res) => {
 });
 
 // View all campaigns (Public)
-router.get('/', async (req, res) => {
+router.get('/campaigns/', async (req, res) => {
   try {
     const campaigns = await getAllCampaigns();
     res.status(200).json({ success: true, campaigns });
@@ -51,7 +52,7 @@ router.get('/', async (req, res) => {
 });
 
 // View one campaign (Public)
-router.get('/:id', async (req, res) => {
+router.get('/campaigns/:id', async (req, res) => {
   const { id } = req.params;
 
   try {
@@ -68,13 +69,13 @@ router.get('/:id', async (req, res) => {
 
 // View campaigns created by the logged-in user
 router.get('/my-campaigns', async (req, res) => {
-  const user = req.session.user;
+  const user = req.session.user; // Make sure the session has the user info
   if (!user) {
     return res.status(401).json({ success: false, message: 'Unauthorized' });
   }
 
   try {
-    const campaigns = await getCampaignsByUserId(user.id);
+    const campaigns = await getCampaignsByUserId(user.id); // Get campaigns by user ID
     res.status(200).json({ success: true, campaigns });
   } catch (err) {
     console.error('Error fetching user\'s campaigns:', err);

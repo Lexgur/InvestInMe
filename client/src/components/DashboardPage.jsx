@@ -1,6 +1,6 @@
 import React from 'react';
 import '../style/dashboard.css';
-import { useAuth } from './useAuth';
+import { useAuth } from './Auth/useAuth';
 
 export default function DashboardPage() {
 

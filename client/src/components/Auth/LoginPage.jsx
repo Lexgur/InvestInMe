@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from './useAuth.js';
 import './RegisterPage.css';
-import * as C from './constants.js';
-import Logo from './Logo.jsx';
+import * as C from '../constants.js';
+import Logo from '../Logo.jsx';
 
 function LoginPage() {
   const [email, setEmail] = useState('');
