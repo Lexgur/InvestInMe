@@ -12,7 +12,7 @@ app.use(express.json());
 
 // Routes
 app.use('/', authRoutes);
-app.use('/campaigns', campaignRoutes); //all campaign routes will start with /campaigns
+app.use('/', campaignRoutes); //all campaign routes will start with /campaigns
 app.use('/donations', donationRoutes); //all donation routes will start with /donations
 app.listen(3000, () => {
   console.log('Server is running on port 3000');

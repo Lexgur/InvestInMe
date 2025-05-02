@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./RegisterPage.css";
-import * as C from "./constants.js";
-import Logo from "./Logo.jsx";
+import * as C from "../constants.js";
+import Logo from "../Logo.jsx";
 
 function RegisterPage() {
   const [email, setEmail] = useState("");
