@@ -28,7 +28,7 @@ export default function NavAll() {
           <div className="right">
             <NavLink to="/campaigns">Browse Campaigns</NavLink>
             <NavLink to="/campaigns/new">Start a Campaign</NavLink>
-            <NavLink to="/campaigns/">My Campaigns</NavLink>
+            <NavLink to="/campaigns/my-campaigns">My Campaigns</NavLink>
             <NavLink to="/dashboard">Profile</NavLink>
             {user?.role === 'admin' && (
               <NavLink to="/admin">Admin Panel</NavLink>

@@ -10,9 +10,7 @@ sessionMiddleware(app);
 app.use(express.json()); // for parsing application/json
 
 // Routes
-app.use('/register', authRoutes);
-app.use('/login', authRoutes);
-app.use('/logout', authRoutes);
+app.use('/', authRoutes);
 app.use('/campaigns', campaignRoutes); // All campaign routes will now be under /campaigns
 
 app.listen(3000, () => {
