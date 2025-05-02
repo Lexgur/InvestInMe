@@ -3,20 +3,19 @@ import { createCampaign, getAllCampaigns, getCampaignById, getCampaignsByUserId 
 
 const router = express.Router();
 
-// Create new campaign
+// CREATE NEW CAMPAIGN
 router.post('/new', async (req, res) => {
   const user = req.session.user;
   if (!user) {
     return res.status(401).json({ success: false, message: 'Unauthorized' });
   }
 
-  const { name, goal, imageUrl } = req.body; // description removed
+  const { name, goal, imageUrl } = req.body;
 
   if (!name || !goal) {
     return res.status(400).json({ success: false, message: 'Name and goal are required' });
   }
 
-  // Ensure goal is a valid decimal (optional validation step)
   if (isNaN(goal) || goal <= 0) {
     return res.status(400).json({ success: false, message: 'Goal must be a positive number' });
   }
@@ -26,7 +25,7 @@ router.post('/new', async (req, res) => {
       userId: user.id,
       name,
       goal,
-      imageUrl // Optional field
+      imageUrl
     });
 
     res.status(201).json({

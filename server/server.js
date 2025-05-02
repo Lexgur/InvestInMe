@@ -7,12 +7,11 @@ const app = express();
 
 // Middlewares
 sessionMiddleware(app);
-app.use(express.json()); // for parsing application/json
+app.use(express.json());
 
 // Routes
 app.use('/', authRoutes);
-app.use('/campaigns', campaignRoutes); // All campaign routes will now be under /campaigns
-
+app.use('/campaigns', campaignRoutes); //all campaign routes will start with /campaigns
 app.listen(3000, () => {
   console.log('Server is running on port 3000');
 });

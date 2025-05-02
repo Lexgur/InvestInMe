@@ -13,7 +13,6 @@ export async function createCampaign({ userId, name, goal, collected = 0.00, ima
     return rows;
   }
 
-
   export async function getCampaignsByUserId(userId) {
     const [rows] = await pool.query('SELECT * FROM campaigns WHERE user_id = ?', [userId]);
     return rows;
