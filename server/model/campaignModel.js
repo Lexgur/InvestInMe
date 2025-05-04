@@ -9,20 +9,27 @@ export async function createCampaign({ userId, name, goal, imageUrl }) {
   return result.lastID;
 }
 
-  export async function getAllCampaigns() {
-    const [rows] = await pool.query('SELECT * FROM campaigns');
-    return rows;
+export async function getAllCampaigns(onlyApproved = false) {
+  let query = 'SELECT * FROM campaigns';
+  let values = [];
+
+  if (onlyApproved) {
+    query += ' WHERE approved = 1';
   }
 
-  export async function getCampaignsByUserId(userId) {
-    const [rows] = await pool.query('SELECT * FROM campaigns WHERE user_id = ?', [userId]);
-    return rows;
-  }
+  const [rows] = await pool.execute(query, values);
+  return rows;
+}
+
+export async function getCampaignsByUserId(userId) {
+  const [rows] = await pool.query('SELECT * FROM campaigns WHERE user_id = ?', [userId]);
+  return rows;
+}
 
 export async function getCampaignById(campaignId) {
-    const [rows] = await pool.query('SELECT * FROM campaigns WHERE id = ?', [campaignId]);
-    return rows[0] || null; 
-  }
+  const [rows] = await pool.query('SELECT * FROM campaigns WHERE id = ?', [campaignId]);
+  return rows[0] || null;
+}
 
 export async function updateCollectedAmount(campaignId, amount) {
   const [result] = await pool.query(

@@ -1,0 +1,76 @@
+.browse-campaigns {
+    padding: 2rem;
+    max-width: 1000px;
+    margin: auto;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .browse-campaigns h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    color: #1f2937;
+  }
+  
+  .campaign-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .campaign-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+    padding: 1.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .campaign-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  }
+  
+  .campaign-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+  
+  .campaign-card h2 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: #111827;
+  }
+  
+  .campaign-card p {
+    margin: 0.25rem 0;
+    color: #4b5563;
+  }
+  
+  .view-button {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+  }
+  
+  .view-button:hover {
+    background-color: #2563eb;
+  }
+  
+  .error {
+    color: red;
+    text-align: center;
+  }
+  
