@@ -139,4 +139,28 @@ router.delete('/campaigns/:id', async (req, res) => {
   }
 });
 
+//ADMIN DELETE CAMPAIGN
+
+router.delete('/admin/delete/:id', async (req, res) => {
+  const user = req.session.user;
+  if (!user || user.role !== 'admin') {
+    return res.status(403).json({ success: false, message: 'Forbidden' });
+  }
+
+  const { id } = req.params;
+
+  try {
+    const [result] = await pool.execute('DELETE FROM campaigns WHERE id = ?', [id]);
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ success: false, message: 'Campaign not found' });
+    }
+
+    res.status(200).json({ success: true, message: 'Campaign deleted by admin' });
+  } catch (err) {
+    console.error('Error deleting campaign as admin:', err);
+    res.status(500).json({ success: false, message: 'Server error' });
+  }
+});
+
 export default router;

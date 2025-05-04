@@ -182,3 +182,17 @@
   .campaign-status.pending {
     color: orange;
   }
+
+  .delete-campaign-button {
+    margin-top: 10px;
+    padding: 8px 12px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .delete-campaign-button:hover {
+    background-color: #c0392b;
+  }
