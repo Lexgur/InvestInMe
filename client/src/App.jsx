@@ -12,6 +12,9 @@ import NewCampaignPage from './components/Campaign/NewCampaignPage';
 import MyCampaignsPage from './components/Campaign/MyCampaignsPage';
 import AdminPanel from './components/AdminPanel';
 import SingleCampaignPage from './components/Campaign/SingleCampaignPage';
+import BrowseCampaignsPage from './components/Campaign/BrowseCampaignsPage';
+import PublicCampaignPage from './components/Campaign/PublicCampaignPage';
+import DonatePage from './components/Donation/DonatePage';
 
 function App() {
   
@@ -29,6 +32,9 @@ function App() {
           <Route path="/my-campaigns" element={<MyCampaignsPage />} />
           <Route path="/admin" element={<AdminPanel />} />
           <Route path='/campaign/:id' element={<SingleCampaignPage />} />
+          <Route path="/campaigns" element={<BrowseCampaignsPage />} />
+          <Route path="/public/campaign/:id" element={<PublicCampaignPage />} />
+          <Route path="/donate/:id" element={<DonatePage />} />
         </Routes>
       </AuthProvider>
     </Router>

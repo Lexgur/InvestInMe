@@ -87,10 +87,24 @@ export default function SingleCampaignPage() {
         <p className={`campaign-status ${campaign.approved ? 'approved' : 'pending'}`}>
                   Status: {campaign.approved ? 'Approved' : 'Pending'}
                 </p>
-        <p>Goal: €{campaign.goal}</p>
-        <p>Collected: €{campaign.collected}</p>
-        <p>Description: {campaign.description}</p>
-  
+                <div className="progress-section">
+                  <div className="progress-text">
+                    €{campaign.collected.toLocaleString()} raised of €
+                    {campaign.goal.toLocaleString()}
+                  </div>
+                  <div className="progress-bar">
+                    <div
+                      className="progress-bar-fill"
+                      style={{
+                        width: `${Math.min(
+                          (campaign.collected / campaign.goal) * 100,
+                          100
+                        )}%`,
+                      }}
+                    ></div>
+                  </div>
+                </div>
+        <p>Collected: €{campaign.collected}</p>  
         <button onClick={deleteCampaign} className="delete-button">Delete Campaign</button><button onClick={goBack} className="back-button">← Back to Campaigns</button>
   
         <h2>Donations</h2>
