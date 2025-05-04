@@ -60,7 +60,9 @@ export default function MyCampaignsPage() {
               )}
               <div className="campaign-content">
                 <h2>{campaign.name}</h2>
-                <p className="description">{campaign.description}</p>
+                <p className={`campaign-status ${campaign.approved ? 'approved' : 'pending'}`}>
+                  Status: {campaign.approved ? 'Approved' : 'Pending'}
+                </p>
                 <div className="progress-section">
                   <div className="progress-text">
                     €{campaign.collected.toLocaleString()} raised of €
