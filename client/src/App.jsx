@@ -10,6 +10,7 @@ import DashboardPage from './components/DashboardPage';
 import NavAll from './components/NavAll';
 import NewCampaignPage from './components/Campaign/NewCampaignPage';
 import MyCampaignsPage from './components/Campaign/MyCampaignsPage';
+import AdminPanel from './components/AdminPanel';
 
 function App() {
   
@@ -25,6 +26,7 @@ function App() {
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/campaigns/new" element={<NewCampaignPage />} />
           <Route path="/my-campaigns" element={<MyCampaignsPage />} />
+          <Route path="/admin" element={<AdminPanel />} />
         </Routes>
       </AuthProvider>
     </Router>

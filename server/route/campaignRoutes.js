@@ -1,5 +1,6 @@
 import express from 'express';
 import { createCampaign, getAllCampaigns, getCampaignById, getCampaignsByUserId } from '../model/campaignModel.js';
+import pool from '../middleware/databaseConnection.js';
 
 const router = express.Router();
 
@@ -43,7 +44,7 @@ router.post('/campaigns/new', async (req, res) => {
 // View all campaigns (Public)
 router.get('/campaigns/', async (req, res) => {
   try {
-    const campaigns = await getAllCampaigns();
+    const campaigns = await getAllCampaigns(true);
     res.status(200).json({ success: true, campaigns });
   } catch (err) {
     console.error('Error fetching campaigns:', err);
@@ -79,6 +80,61 @@ router.get('/my-campaigns', async (req, res) => {
     res.status(200).json({ success: true, campaigns });
   } catch (err) {
     console.error('Error fetching user\'s campaigns:', err);
+    res.status(500).json({ success: false, message: 'Server error' });
+  }
+});
+
+router.get('/admin', async (req, res) => {
+  const user = req.session.user;
+  if (!user || user.role !== 'admin') {
+    return res.status(403).json({ success: false, message: 'Forbidden' });
+  }
+
+  try {
+    const campaigns = await getAllCampaigns(false);
+    const pending = campaigns.filter(c => !c.approved);
+    res.status(200).json({ success: true, campaigns: pending });
+  } catch (err) {
+    console.error('Error fetching pending campaigns:', err);
+    res.status(500).json({ success: false, message: 'Server error' });
+  }
+});
+
+router.post('/approve/:id', async (req, res) => {
+  const user = req.session.user;
+  if (!user || user.role !== 'admin') {
+    return res.status(403).json({ success: false, message: 'Forbidden' });
+  }
+
+  const { id } = req.params;
+  try {
+    await pool.execute('UPDATE campaigns SET approved = 1 WHERE id = ?', [id]);
+    res.status(200).json({ success: true, message: 'Campaign approved' });
+  } catch (err) {
+    console.error('Error approving campaign:', err);
+    res.status(500).json({ success: false, message: 'Server error' });
+  }
+});
+// DELETE CAMPAIGN
+router.delete('/campaigns/:id', async (req, res) => {
+  const user = req.session.user;
+  const { id } = req.params;
+
+  try {
+    const campaign = await getCampaignById(id);
+
+    if (!campaign) {
+      return res.status(404).json({ success: false, message: 'Campaign not found' });
+    }
+
+    if (campaign.user_id !== user.id) {
+      return res.status(403).json({ success: false, message: 'Not allowed to delete this campaign' });
+    }
+
+    await pool.execute('DELETE FROM campaigns WHERE id = ?', [id]);
+    res.status(200).json({ success: true, message: 'Campaign deleted' });
+  } catch (err) {
+    console.error('Error deleting campaign:', err);
     res.status(500).json({ success: false, message: 'Server error' });
   }
 });
