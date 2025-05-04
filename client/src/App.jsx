@@ -11,6 +11,7 @@ import NavAll from './components/NavAll';
 import NewCampaignPage from './components/Campaign/NewCampaignPage';
 import MyCampaignsPage from './components/Campaign/MyCampaignsPage';
 import AdminPanel from './components/AdminPanel';
+import SingleCampaignPage from './components/Campaign/SingleCampaignPage';
 
 function App() {
   
@@ -27,6 +28,7 @@ function App() {
           <Route path="/campaigns/new" element={<NewCampaignPage />} />
           <Route path="/my-campaigns" element={<MyCampaignsPage />} />
           <Route path="/admin" element={<AdminPanel />} />
+          <Route path='/campaign/:id' element={<SingleCampaignPage />} />
         </Routes>
       </AuthProvider>
     </Router>
