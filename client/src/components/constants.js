@@ -5,3 +5,4 @@ export const NEW_CAMPAIGN = 'campaigns/new';
 export const CAMPAIGNS = 'campaigns';
 export const MY_CAMPAIGNS = 'my-campaigns';
 export const ADMIN_PANEL = 'admin';
+export const CAMPAIGN = 'campaigns/';
