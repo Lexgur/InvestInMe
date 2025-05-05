@@ -40,32 +40,35 @@ export default function BrowseCampaignsPage() {
         <p>No campaigns available.</p>
       ) : (
         <div className="campaign-list">
-          {campaigns.map(campaign => (
-            <div key={campaign.id} className="campaign-card">
-              <h2>{campaign.name}</h2>
-              {campaign.image_url && <img src={campaign.image_url} alt={campaign.name} />}
-              <div className="progress-section">
-                <div className="progress-text">
-                  €{campaign.collected.toLocaleString()} raised of €
-                  {campaign.goal.toLocaleString()}
+          {[...campaigns]
+            .sort((a, b) => {
+              const aFullyFunded = a.collected >= a.goal;
+              const bFullyFunded = b.collected >= b.goal;
+              return aFullyFunded - bFullyFunded;
+            })
+            .map(campaign => (
+              <div key={campaign.id} className="campaign-card">
+                <h2>{campaign.name}</h2>
+                {campaign.image_url && <img src={campaign.image_url} alt={campaign.name} />}
+                <div className="progress-section">
+                  <div className="progress-text">
+                    €{campaign.collected.toLocaleString()} raised of €
+                    {campaign.goal.toLocaleString()}
+                  </div>
+                  <div className="progress-bar">
+                    <div
+                      className="progress-bar-fill"
+                      style={{
+                        width: `${Math.min((campaign.collected / campaign.goal) * 100, 100)}%`,
+                      }}
+                    ></div>
+                  </div>
                 </div>
-                <div className="progress-bar">
-                  <div
-                    className="progress-bar-fill"
-                    style={{
-                      width: `${Math.min(
-                        (campaign.collected / campaign.goal) * 100,
-                        100
-                      )}%`,
-                    }}
-                  ></div>
-                </div>
+                <NavLink to={`/public/campaign/${campaign.id}`} className="view-button">
+                  View Campaign
+                </NavLink>
               </div>
-              <NavLink to={`/public/campaign/${campaign.id}`} className="view-button">
-                View Campaign
-              </NavLink>
-            </div>
-          ))}
+            ))}
         </div>
       )}
     </div>

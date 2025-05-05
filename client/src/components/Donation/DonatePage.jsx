@@ -26,10 +26,10 @@ export default function DonatePage() {
   const handleDonate = async () => {
     try {
       await axios.post(`${C.URL}donations/donate`, {
-        campaign_id: id,
+        campaignId: id,
         amount: parseFloat(amount),
       }, { withCredentials: true });
-      navigate(`/public-campaign/${id}`);
+      navigate(`/campaigns`);
     } catch (err) {
       console.error(err);
       setError('Failed to donate');
@@ -38,17 +38,38 @@ export default function DonatePage() {
 
   if (error) return <div className="error">{error}</div>;
   if (!campaign) return <div><Loader></Loader></div>;
-
+  const remainingAmount = campaign.goal - campaign.collected;
   return (
     <div className="donate-page-container">
       <h2>Donate to: {campaign.name}</h2>
+  
       <input
         type="number"
-        placeholder="Enter amount (€)"
+        step="0.01"
+        min="0.01"
+        max={remainingAmount}
+        placeholder={`Enter amount (max €${remainingAmount.toFixed(2)})`}
         value={amount}
         onChange={(e) => setAmount(e.target.value)}
       />
-      <button onClick={handleDonate} disabled={!amount}>Donate</button>
+  
+      {/* It will throw an error if the amount is higher than the remainingAmount of the goal */}
+      {parseFloat(amount) > remainingAmount && (
+        <div className="error">
+          Amount exceeds remaining goal (€{remainingAmount.toFixed(2)})
+        </div>
+      )}
+  
+      <button
+        onClick={handleDonate}
+        disabled={
+          !amount ||
+          parseFloat(amount) <= 0 ||
+          parseFloat(amount) > remainingAmount
+        }
+      >
+        Donate
+      </button>
     </div>
   );
 }
