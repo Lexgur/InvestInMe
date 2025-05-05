@@ -53,21 +53,24 @@
     color: #4b5563;
   }
   
-  .view-button {
-    margin-top: 1rem;
-    padding: 0.5rem 1rem;
-    background-color: #3b82f6;
-    color: white;
-    border: none;
-    border-radius: 6px;
+  .view-button-navlink {
+    margin-top: 15px;
+    display: block;
+    width: 100%;
+    margin-left: -5px;
+    background: linear-gradient(to right, #C880B7, #c071ae);
+    color: #ffffff;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
     text-align: center;
     text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.2s ease;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background 0.3s ease, transform 0.2s ease;
   }
   
-  .view-button:hover {
-    background-color: #2563eb;
+  .view-button-navlink:hover {
+    background-color: #ffffff;
   }
   
   .error {

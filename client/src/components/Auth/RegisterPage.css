@@ -1,5 +1,5 @@
 body {
-  background: linear-gradient(135deg, #e6f4ea, #ffffff);
+  background: linear-gradient(135deg, #E5E5E5, #ffffff);
   color: #000000;
   background-size: cover;
   background-position: center;
@@ -60,7 +60,7 @@ body {
 .submitButton {
   width: 100%;
   padding: 12px;
-  background-color: #3b3b3b;
+  background-color: #404E4D;
   color: #FFFFFF;
   border: none;
   border-radius: 8px;
@@ -72,7 +72,7 @@ body {
 }
 
 .submitButton:hover {
-  background-color: #000000;
+  background-color: #27302f;
   transform: translateY(-2px);
 }
 

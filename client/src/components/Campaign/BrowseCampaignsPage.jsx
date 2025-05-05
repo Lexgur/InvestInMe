@@ -64,7 +64,7 @@ export default function BrowseCampaignsPage() {
                     ></div>
                   </div>
                 </div>
-                <NavLink to={`/public/campaign/${campaign.id}`} className="view-button">
+                <NavLink to={`/public/campaign/${campaign.id}`} className="view-button-navlink">
                   View Campaign
                 </NavLink>
               </div>

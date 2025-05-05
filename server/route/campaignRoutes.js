@@ -68,22 +68,21 @@ router.get('/campaigns/:id', async (req, res) => {
   }
 });
 
-// View campaigns created by the logged-in user
 router.get('/my-campaigns', async (req, res) => {
-  const user = req.session.user; // Make sure the session has the user info
+  const user = req.session.user;
   if (!user) {
     return res.status(401).json({ success: false, message: 'Unauthorized' });
   }
 
   try {
-    const campaigns = await getCampaignsByUserId(user.id); // Get campaigns by user ID
+    const campaigns = await getCampaignsByUserId(user.id);
     res.status(200).json({ success: true, campaigns });
   } catch (err) {
-    console.error('Error fetching user\'s campaigns:', err);
+    console.error('Error fetching user campaigns:', err);
     res.status(500).json({ success: false, message: 'Server error' });
   }
 });
-
+  
 router.get('/admin', async (req, res) => {
   const user = req.session.user;
   if (!user || user.role !== 'admin') {
