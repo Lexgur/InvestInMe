@@ -1,15 +1,123 @@
 # InvestInMe
-It's a gofund me page inspired website built on React, MySQL and Node.js
 
-# React + Vite
+**InvestInMe** is a crowdfunding platform inspired by GoFundMe, where users can create campaigns, donate to causes, and track fundraising progress. It’s built using **React (Vite)** on the frontend, **Node.js (Express)** for the backend, and **MySQL** as the database.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+## 📌 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🧾 User registration and authentication
+- 📢 Campaign creation with descriptions, goals, and images
+- 💰 Secure donation functionality (faked)
+- 📊 Real-time progress tracking for fundraising
+- 🧑‍💼 User dashboard for managing campaigns and contributions
+- 🔐 Server-side validation and data protection
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ⚙️ Tech Stack
+
+| Layer      | Technology        |
+|------------|-------------------|
+| Frontend   | React + Vite      |
+| Backend    | Node.js + Express |
+| Database   | MySQL             |
+| Styling    | SCSS / Custom CSS |
+| Auth       | Express session   |
+| Dev Tools  | ESLint, Prettier  |
+
+---
+
+## 🔧 Getting Started
+
+### Prerequisites
+
+- Node.js (v18+ recommended)
+- MySQL
+- Git
+
+### Backend Setup
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Lexgur/InvestInMe
+   cd investinme
+   ```
+
+2. Install server dependencies:
+   ```bash
+   cd server
+   npm install
+   ```
+
+3. Set up your `config` file:
+   ```env
+   DB_HOST=localhost
+   DB_USER=root
+   DB_PASSWORD=yourpassword
+   DB_NAME=investinme
+   JWT_SECRET=your_jwt_secret
+   ```
+
+4. Initialize the database schema:
+   ```bash
+   npm run migrate
+   ```
+
+5. Start the server:
+   ```bash
+   npm start
+   ```
+
+### Frontend Setup
+
+1. Move to the frontend directory:
+   ```bash
+   cd ../client
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+---
+
+## 🧪 Linting and Code Quality
+
+This project includes ESLint for code consistency. You can lint your code with:
+
+```bash
+npm run lint
+```
+
+For a production-grade app, consider using TypeScript with `typescript-eslint`.
+
+---
+
+## 📁 Project Structure
+
+```
+investinme/
+├── client/              # React frontend (Vite)
+│   └── src/
+├── server/              # Node.js backend (Express)
+│   └── route/
+│   └── validation/      # Validation logic seperated
+│   └── model/
+│   └── middleware/
+├── config/            # config for database
+├── README.md
+```
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please fork the repository and open a pull request with your improvements.
+

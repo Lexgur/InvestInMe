@@ -15,6 +15,7 @@ import SingleCampaignPage from './components/Campaign/SingleCampaignPage';
 import BrowseCampaignsPage from './components/Campaign/BrowseCampaignsPage';
 import PublicCampaignPage from './components/Campaign/PublicCampaignPage';
 import DonatePage from './components/Donation/DonatePage';
+import AboutPage from './components/AboutPage';
 
 function App() {
   
@@ -35,6 +36,8 @@ function App() {
           <Route path="/campaigns" element={<BrowseCampaignsPage />} />
           <Route path="/public/campaign/:id" element={<PublicCampaignPage />} />
           <Route path="/donations/donate/:id" element={<DonatePage />} />
+          <Route path='/about' element={<AboutPage />} />
+          <Route path="*" element={<div>404 Not Found</div>} />
         </Routes>
       </AuthProvider>
     </Router>
