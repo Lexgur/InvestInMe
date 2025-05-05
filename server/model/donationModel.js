@@ -53,3 +53,25 @@ export async function getDonationsByUserId(userId) {
   );
   return rows;
 }
+
+export async function getTopInvestors(limit = 10) {
+  const numericLimit = Number(limit);
+  const [rows] = await pool.query(`
+    SELECT users.id, users.username, SUM(donations.amount) AS total_donated
+    FROM donations
+    JOIN users ON donations.user_id = users.id
+    GROUP BY users.id
+    ORDER BY total_donated DESC
+    LIMIT ?
+  `, [numericLimit]); 
+  return rows;
+}
+
+export async function getTotalDonatedAmount(userId) {
+  const result = await pool.query(
+    'SELECT SUM(amount) as total FROM donations WHERE user_id = ?',
+    [userId]
+  );
+  const totalDonated = result[0][0].total;
+  return totalDonated || 0;
+}

@@ -34,7 +34,7 @@ export default function PublicCampaignPage() {
 
     const goBack = () => {
         navigate('/campaigns'); // Navigate back to campaign list
-      };
+    };
 
     if (loading) return <div className="loader-container"><Loader /></div>;
     if (error) return <div className="error">{error}</div>;
@@ -46,9 +46,6 @@ export default function PublicCampaignPage() {
                 {campaign.image_url && (
                     <img src={campaign.image_url} alt={campaign.name} className="campaign-image" />
                 )}
-                <p className={`campaign-status ${campaign.approved ? 'approved' : 'pending'}`}>
-                    Status: {campaign.approved ? 'Approved' : 'Pending'}
-                </p>
                 <div className="progress-section">
                     <div className="progress-text">
                         €{campaign.collected.toLocaleString()} raised of €
@@ -61,12 +58,15 @@ export default function PublicCampaignPage() {
                         ></div>
                     </div>
                 </div>
-                <button
-                    className="donate-button"
-                    onClick={() => navigate(`/donate/${campaign.id}`)}
-                >
-                    Donate Now
-                </button><button onClick={goBack} className="back-button">← Back to Campaigns</button>
+
+                {campaign.collected < campaign.goal && (
+                    <button
+                        className="donate-button"
+                        onClick={() => navigate(`/donations/donate/${id}`)}
+                    >
+                        Donate Now
+                    </button>
+                )}<button onClick={goBack} className="back-button">← Back to Campaigns</button>
             </div>
         </div>
     );

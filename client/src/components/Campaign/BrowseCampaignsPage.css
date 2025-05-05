@@ -1,5 +1,5 @@
 .browse-campaigns {
-    padding: 2rem;
+    padding: 1rem;
     max-width: 1000px;
     margin: auto;
     font-family: 'Segoe UI', sans-serif;
@@ -14,19 +14,20 @@
   
   .campaign-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.3rem;
   }
   
   .campaign-card {
     background-color: #ffffff;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
-    padding: 1.5rem;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    width: 77%;
+    padding: 1rem;
   }
   
   .campaign-card:hover {

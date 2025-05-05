@@ -34,7 +34,7 @@ function App() {
           <Route path='/campaign/:id' element={<SingleCampaignPage />} />
           <Route path="/campaigns" element={<BrowseCampaignsPage />} />
           <Route path="/public/campaign/:id" element={<PublicCampaignPage />} />
-          <Route path="/donate/:id" element={<DonatePage />} />
+          <Route path="/donations/donate/:id" element={<DonatePage />} />
         </Routes>
       </AuthProvider>
     </Router>
