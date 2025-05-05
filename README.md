@@ -36,7 +36,7 @@
 - MySQL
 - Git
 
-### Backend Setup
+### Backend Setup ((CURRENTLY THE PROJECT LACKS MIGRATIONS AND SCRIPTS FOR DATABASE CREATIONS BUT IT WILL BE ADDED))
 
 1. Clone the repository:
    ```bash
