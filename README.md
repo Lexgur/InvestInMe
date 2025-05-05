@@ -36,7 +36,7 @@
 - MySQL
 - Git
 
-### Backend Setup ((CURRENTLY THE PROJECT LACKS MIGRATIONS AND SCRIPTS FOR DATABASE CREATIONS BUT IT WILL BE ADDED))
+### Backend Setup ((CURRENTLY THE PROJECT LACKS MIGRATIONS AND SCRIPTS FOR DATABASE CREATIONS BUT IT WILL BE ADDED, only a manual schema.sql exists))
 
 1. Clone the repository:
    ```bash
@@ -61,7 +61,7 @@
 
 4. Initialize the database schema:
    ```bash
-   npm run migrate
+   mysql -u root -p < schema.sql
    ```
 
 5. Start the server:
