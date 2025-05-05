@@ -10,7 +10,7 @@ body {
 }
 
 .auth-nav {
-  background: #FFFFFF;
+  background: #8783D1;
   height: 85px;
   display: flex;
   align-items: center;
@@ -68,7 +68,7 @@ body {
 .auth-nav .right a.active,
 .auth-nav .left a.active {
   border-color: #666666; /* Even darker grey for active state */
-  background-color: #E8E8E8; /*Mauritanian
+  background-color: #7a77c0; /*Mauritanian
   background-color: #E8E8E8; /* Slightly darker grey background for active */
 }
 

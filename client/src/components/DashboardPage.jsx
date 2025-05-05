@@ -38,6 +38,11 @@ export default function DashboardPage() {
     fetchDashboardData();
   }, [user.id]);
 
+  const totalCollected = userGoals.reduce((total, goal) => {
+    const amount = parseFloat(goal.collected);
+    return total + (isNaN(amount) ? 0 : amount);
+  }, 0);
+
   if (loading) return <div><Loader /></div>;
   if (error) return <div className="error">{error}</div>;
 
@@ -55,9 +60,7 @@ export default function DashboardPage() {
 
         <div className="dashboard-card">
           <h2>How much others have donated to my campaigns?</h2>
-          <p className="dashboard-value">
-            €{userGoals.reduce((total, goal) => total + parseFloat(goal.collected || 0), 0).toLocaleString()}
-          </p>
+          <p className="dashboard-value">€{totalCollected.toLocaleString()}</p>
         </div>
 
         <div className="dashboard-card full-width">

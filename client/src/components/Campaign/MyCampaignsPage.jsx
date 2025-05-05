@@ -59,7 +59,7 @@ export default function MyCampaignsPage() {
                 />
               )}
               <div className="campaign-content">
-                <h2>{campaign.name}</h2>
+                <h2 className='campaign-name'>{campaign.name}</h2>
                 <p className={`campaign-status ${campaign.approved ? 'approved' : 'pending'}`}>
                   Status: {campaign.approved ? 'Approved' : 'Pending'}
                 </p>

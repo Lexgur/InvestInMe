@@ -39,7 +39,7 @@
   .cmp-button {
     width: 100%;
     padding: 10px;
-    background-color: #4CAF50;
+    background-color: #404E4D;
     color: white;
     border: none;
     font-size: 16px;
@@ -48,7 +48,7 @@
   }
   
   .cmp-button:hover {
-    background-color: #45a049;
+    background-color: #548380;
   }
   
   p {

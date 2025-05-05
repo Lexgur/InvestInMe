@@ -27,8 +27,8 @@ export async function getCampaignsByUserId(userId) {
 }
 
 export async function getCampaignById(campaignId) {
-  const [rows] = await pool.query('SELECT * FROM campaigns WHERE id = ?', [campaignId]);
-  return rows[0] || null;
+const [rows] = await pool.query('SELECT * FROM campaigns WHERE id = ?', [campaignId]);
+return rows[0] || null;
 }
 
 export async function updateCollectedAmount(campaignId, amount) {
