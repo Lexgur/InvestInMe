@@ -4,8 +4,10 @@ import axios from 'axios';
 import * as C from '../constants';
 import Loader from '../Loader';
 import './SingleCampaignPage.css';
+import { useAuth } from '../Auth/useAuth';
 
 export default function PublicCampaignPage() {
+    const { user } = useAuth();
     const { id } = useParams();
     const navigate = useNavigate();
     const [campaign, setCampaign] = useState(null);
@@ -36,6 +38,16 @@ export default function PublicCampaignPage() {
         navigate('/campaigns'); // Navigate back to campaign list
     };
 
+    const handleDonateClick = () => {
+        if (!user) {
+            // If the user is not logged in, redirect to login page
+            navigate('/login');
+        } else {
+            // If the user is logged in, navigate to donation page
+            navigate(`/donations/donate/${id}`);
+        }
+    };
+
     if (loading) return <div className="loader-container"><Loader /></div>;
     if (error) return <div className="error">{error}</div>;
 
@@ -48,8 +60,7 @@ export default function PublicCampaignPage() {
                 )}
                 <div className="progress-section">
                     <div className="progress-text">
-                        €{campaign.collected.toLocaleString()} raised of €
-                        {campaign.goal.toLocaleString()}
+                        €{campaign.collected.toLocaleString()} raised of €{campaign.goal.toLocaleString()}
                     </div>
                     <div className="progress-bar">
                         <div
@@ -62,11 +73,12 @@ export default function PublicCampaignPage() {
                 {campaign.collected < campaign.goal && (
                     <button
                         className="donate-button"
-                        onClick={() => navigate(`/donations/donate/${id}`)}
+                        onClick={handleDonateClick}
                     >
                         Donate Now
                     </button>
-                )}<button onClick={goBack} className="back-button">← Back to Campaigns</button>
+                )}
+                <button onClick={goBack} className="back-button">← Back to Campaigns</button>
             </div>
         </div>
     );
