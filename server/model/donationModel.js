@@ -54,17 +54,16 @@ export async function getDonationsByUserId(userId) {
   return rows;
 }
 
-export async function getTopInvestors(userId, limit = 10) {
+export async function getTopInvestors(limit = 10) {
+  const numericLimit = Number(limit);
   const [rows] = await pool.query(`
     SELECT users.id, users.username, SUM(donations.amount) AS total_donated
     FROM donations
     JOIN users ON donations.user_id = users.id
-    JOIN campaigns ON donations.campaign_id = campaigns.id
-    WHERE campaigns.user_id = ?
     GROUP BY users.id
     ORDER BY total_donated DESC
     LIMIT ?
-  `, [userId, limit]);
+  `, [numericLimit]); 
   return rows;
 }
 

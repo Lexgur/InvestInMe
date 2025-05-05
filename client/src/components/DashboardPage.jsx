@@ -26,7 +26,6 @@ export default function DashboardPage() {
 
         // Fetch top investors for the user's campaigns
         const topInvestorsResponse = await axios.get(`${C.URL}donations/top-investors`, { params: { userId: user.id }, withCredentials: true });
-        console.log(topInvestorsResponse.data);
         setTopInvestors(topInvestorsResponse.data.topInvestors);
       } catch (err) {
         console.error(err);
@@ -66,8 +65,7 @@ export default function DashboardPage() {
           <ul className="top-investors-list">
             {topInvestors.map((investor, index) => (
               <li key={index}>
-                {investor.username} – €
-                {(investor.total_donated ?? 0).toLocaleString()}
+                {investor.username} – €{(parseFloat(investor.total_donated) || 0).toLocaleString()}
               </li>
             ))}
           </ul>
