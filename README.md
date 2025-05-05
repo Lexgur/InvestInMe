@@ -106,6 +106,8 @@ For a production-grade app, consider using TypeScript with `typescript-eslint`.
 investinme/
 ├── client/              # React frontend (Vite)
 │   └── src/
+│          └── assets/   
+│          └── components/   
 ├── server/              # Node.js backend (Express)
 │   └── route/
 │   └── validation/      # Validation logic seperated
