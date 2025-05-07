@@ -1,8 +1,9 @@
-import mysql from 'mysql2/promise';
-import pkg from '../../config/config.js';
+import { createPool } from 'mysql2/promise';
+import config from '../../config/config.js';
 
-const { db } = pkg;
+export const getPool = (dbConfig = config.db) => {
+  return createPool(dbConfig);
+};
 
-const pool = mysql.createPool(db);
-
+const pool = getPool(); // for production usage
 export default pool;
